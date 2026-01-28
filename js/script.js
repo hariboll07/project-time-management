@@ -236,11 +236,11 @@ function signInValidation() {
 
   // Role-based redirection
   if (userFound.role === "admin") {
-    window.location.href = "/admin/dashboard.html";
+    window.location.href = "../admin/dashboard.html";
   }else if (userFound.role === "manager") {
-    window.location.href = "/manager/dashboard.html";
+    window.location.href = "../manager/dashboard.html";
   } else if (userFound.role === "employee") {
-    window.location.href = "/employee/dashboard.html";
+    window.location.href = "../employee/dashboard.html";
   }
 }
 
