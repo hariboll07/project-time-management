@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Manager Dashboard</title>
+    <link rel="stylesheet" href="../css/admin.css" />
+  </head>
+
+  <body>
+    <div id="layout">
+      <!-- SIDEBAR -->
+      <aside id="sidebar">
+        <div class="logo">BHK Groups</div>
+        <nav class="menu">
+          <div class="navs-bar">
+            <button onclick="showSection('dashboard')">Dashboard</button>
+            <button onclick="showSection('projects')">My Projects</button>
+            <button onclick="showSection('tasks')">Tasks</button>
+            <button onclick="showSection('employees')">Employees</button>
+          </div>
+
+          <div class="logoutbtn-bar">
+            <button class="logout-btn" onclick="logout()">Logout</button>
+          </div>
+        </nav>
+      </aside>
+
+      <!-- MAIN CONTENT -->
+      <main id="mainContent">
+        <!-- DASHBOARD -->
+        <section id="dashboard" class="section">
+          <h1>Manager Dashboard</h1>
+
+          <div class="overview-row">
+            <div class="overview-card">
+              <p class="label5">My Projects</p>
+              <h2 id="myProjectCount">0</h2>
+            </div>
+
+            <div class="overview-card">
+              <p class="label1">Completed Projects</p>
+              <h2 id="myCompletedProjectCount">0</h2>
+            </div>
+
+            <div class="overview-card">
+              <p class="label7">My Tasks</p>
+              <h2 id="myTaskCount">0</h2>
+            </div>
+
+            <div class="overview-card">
+              <p class="label8">Completed Tasks</p>
+              <h2 id="myCompletedTaskCount">0</h2>
+            </div>
+
+            <div class="overview-card">
+              <p class="label2">Tasks Due Today</p>
+              <h2 id="dueTodayTaskCount">0</h2>
+            </div>
+
+            <div class="overview-card">
+              <p class="label3">Overdue Tasks</p>
+              <h2 id="overdueTaskCount">0</h2>
+            </div>
+
+            <div class="overview-card">
+              <p class="label4">Overdue Projects</p>
+              <h2 id="overdueProjectCount">0</h2>
+            </div>
+          </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects" class="section hidden">
+          <h1>My Projects</h1>
+          <div id="projectList"></div>
+        </section>
+
+        <!-- TASKS -->
+        <section id="tasks" class="section hidden">
+          <h1>Tasks</h1>
+
+          <button onclick="openTaskModal()" id="hiddentaskbtn">Add Task</button>
+
+          <div id="taskList"></div>
+        </section>
+
+        <!-- TASK MODAL -->
+        <div id="taskModal" class="modal hidden">
+          <div class="modal-content">
+            <h2>Add Task</h2>
+
+            <label>Task Title</label>
+            <input type="text" id="taskTitle" />
+
+            <label>Project</label>
+            <select id="taskProject"></select>
+
+            <label>Employees</label>
+            <div id="taskEmployeeList"></div>
+
+            <label>Deadline</label>
+            <input type="date" id="taskDeadline" />
+
+            <label>Status</label>
+            <select id="taskStatus">
+              <option value="Pending">Pending</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Completed">Completed</option>
+            </select>
+
+            <div class="modal-actions">
+              <button onclick="saveTask()">Save</button>
+              <button onclick="closeTaskModal()">Cancel</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- EMPLOYEES -->
+        <section id="employees" class="section hidden">
+          <h1>My Employees</h1>
+          <div id="employeeList"></div>
+        </section>
+        <!-- PROJECT TASKS FIXED PANEL -->
+        <div id="projectTasksPanel" class="hidden">
+          <div class="panel-header">
+            <h2 id="projectTasksTitle">Project Tasks</h2>
+            <button onclick="closeProjectTasks()" class="close">❌</button>
+          </div>
+
+          <div id="projectTasksList"></div>
+        </div>
+      </main>
+    </div>
+
+    <script src="../js/manager.js"></script>
+  </body>
+</html>

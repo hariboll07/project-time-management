@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="Css/style.css" />
+  </head>
+
+  <body>
+    <div id="container">
+      <div id="signup">
+        <h2>Sign Up</h2>
+        <form action="" id="form1">
+          <div class="field">
+            <label>UserName</label>
+            <input type="text" placeholder="Enter a UserName" id="uname" />
+            <span class="material-icons error"> error </span>
+            <span class="material-icons success"> check_circle </span>
+            <small>error message</small>
+          </div>
+          <div class="field">
+            <label>FullName</label>
+            <input type="text" placeholder="Enter a FullName" id="fname" />
+            <span class="material-icons error"> error </span>
+            <span class="material-icons success"> check_circle </span>
+            <small>error message</small>
+          </div>
+          <div class="field">
+            <label>Email Address</label>
+            <input type="email" id="email" placeholder="Enter a Email" />
+            <span class="material-icons error"> error </span>
+            <span class="material-icons success"> check_circle </span>
+            <small>error message</small>
+          </div>
+          <div class="field">
+            <label>Password</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="Enter a Password"
+            />
+            <span class="material-icons error"> error </span>
+            <span class="material-icons success"> check_circle </span>
+            <small>error message</small>
+          </div>
+          <div class="field">
+            <label>Confirm Password</label>
+            <input
+              type="password"
+              id="cpassword"
+              placeholder="Enter a Password"
+            />
+            <span class="material-icons error"> error </span>
+            <span class="material-icons success"> check_circle </span>
+            <small>error message</small>
+          </div>
+          <div class="field">
+            <label>Select Role</label>
+            <select id="role">
+              <option value="">Choose Role</option>
+              <option value="manager">Manager</option>
+              <option value="employee">Employee</option>
+            </select>
+            <small>error message</small>
+          </div>
+          <div class="field">
+            <input type="checkbox" id="tc" class="terms" />
+            <label>Agree Terms and Conditions</label>
+            <small>error message</small>
+          </div>
+          <input type="submit" class="button" />
+        </form>
+        <p>
+          Aleady have a account?<button
+            class="signinbtn"
+            onclick="changeToSignin()"
+          >
+            Sign in
+          </button>
+        </p>
+      </div>
+      <div id="signin">
+        <h2>Sign In</h2>
+        <form action="" id="form2">
+          <div class="field">
+            <label>UserName</label>
+            <input type="text" placeholder="Enter a UserName" id="uName1" />
+            <span class="material-icons error"> error </span>
+            <span class="material-icons success"> check_circle </span>
+            <small>error message</small>
+          </div>
+          <div class="field">
+            <label>Password</label>
+            <input
+              type="password"
+              id="passWord1"
+              placeholder="Enter a Password"
+            />
+            <span class="material-icons error"> error </span>
+            <span class="material-icons success"> check_circle </span>
+            <small>error message</small>
+          </div>
+          <input type="submit" class="button" />
+        </form>
+        <p>
+          New for Site?
+          <button
+            class="signupbtn"
+            style="width: 145px"
+            onclick="changeToSignup()"
+          >
+            Create a new account
+          </button>
+        </p>
+      </div>
+    </div>
+    <script src="/js/script.js"></script>
+  </body>
+</html>

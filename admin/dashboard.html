@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="../css/admin.css" />
+  </head>
+
+  <body>
+    <div id="layout">
+      <!-- SIDEBAR (we will build this next) -->
+      <aside id="sidebar">
+        <div class="logo">BHK Groups</div>
+        <nav class="menu">
+          <div class="navs-bar">
+            <button onclick="showSection('dashboard')">Dashboard</button>
+            <button onclick="showSection('approvals')">Approvals</button>
+            <button onclick="showSection('users')">Users</button>
+            <button onclick="showSection('projects')">Projects</button>
+            <button onclick="showSection('tasks')">Tasks</button>
+          </div>
+          <div class="logoutbtn-bar">
+            <button class="logout-btn" onclick="logout()">Logout</button>
+          </div>
+        </nav>
+      </aside>
+
+      <!-- MAIN CONTENT (we will build each section later) -->
+      <main id="mainContent">
+        <!-- top nav will come later -->
+
+        <!-- Default page -->
+        <section id="dashboard" class="section">
+          <h1>Dashboard Overview</h1>
+
+          <div class="overview-row">
+            <div class="overview-card">
+              <p class="label1">Total Users</p>
+              <h2 id="totalUsers"></h2>
+            </div>
+            <div class="overview-card">
+              <p class="label2">Total Managers</p>
+              <h2 id="totalManagers"></h2>
+            </div>
+            <div class="overview-card">
+              <p class="label3">Total Employees</p>
+              <h2 id="totalEmployees"></h2>
+            </div>
+            <div class="overview-card">
+              <p class="label4">Pending Approvals</p>
+              <h2 id="pendingUsersCount"></h2>
+            </div>
+
+            <div class="overview-card">
+              <p class="label5">Projects</p>
+              <h2 id="projectCount"></h2>
+            </div>
+            <div class="overview-card">
+              <p class="label6">Completed Projects</p>
+              <h2 id="completedProjectsCount"></h2>
+            </div>
+
+            <div class="overview-card">
+              <p class="label7">Tasks</p>
+              <h2 id="taskCount"></h2>
+            </div>
+            <div class="overview-card">
+              <p class="label8">Completed Tasks</p>
+              <h2 id="completedtaskCount"></h2>
+            </div>
+          </div>
+        </section>
+        <!-- APPROVALS SECTION -->
+        <section id="approvals" class="section hidden">
+          <h1>Pending Approvals</h1>
+          <div id="pendingUsers"></div>
+        </section>
+
+        <!-- USERS SECTION -->
+        <section id="users" class="section hidden">
+          <h1>Approved Users</h1>
+          <div id="approvedUsers"></div>
+        </section>
+
+        <!-- PROJECTS SECTION -->
+        <section id="projects" class="section hidden">
+          <h1>Projects</h1>
+
+          <button onclick="openProjectModal()" id="hiddenprojectbtn">
+            Add Project
+          </button>
+
+          <div id="projectList"></div>
+          <!-- PROJECT TASKS FIXED PANEL -->
+          <div id="projectTasksPanel" class="hidden">
+            <div class="panel-header">
+              <h2 id="projectTasksTitle">Project Tasks</h2>
+              <button onclick="closeProjectTasks()" class="close">❌</button>
+            </div>
+            <div id="projectTasksList"></div>
+          </div>
+        </section>
+
+        <!-- TASKS SECTION -->
+        <section id="tasks" class="section hidden">
+          <h1>Tasks</h1>
+          <button onclick="openTaskModal()" id="hiddentaskbtn">Add Task</button>
+          <div id="taskList"></div>
+        </section>
+        <!-- PROJECT MODAL -->
+        <div id="projectModal" class="modal hidden">
+          <div class="modal-content">
+            <h2>Add Project</h2>
+
+            <label>Project Name</label>
+            <input type="text" id="projectName" />
+
+            <label>Assign Manager</label>
+            <select id="projectManager"></select>
+
+            <label>Deadline</label>
+            <input type="date" id="projectDeadline" />
+
+            <div class="modal-actions">
+              <button onclick="saveProject()">Save</button>
+              <button onclick="closeProjectModal()">Cancel</button>
+            </div>
+          </div>
+        </div>
+        <!-- TASK MODAL -->
+        <div id="taskModal" class="modal hidden">
+          <div class="modal-content">
+            <h2>Add Task</h2>
+            <label>Task Title</label>
+            <input type="text" id="taskTitle" />
+
+            <label>Project</label>
+            <select id="taskProject"></select>
+
+            <div class="employeeList">
+              <label>Employees</label>
+              <div id="taskEmployeeList"></div>
+            </div>
+
+            <label>Task Deadline</label>
+            <input type="date" id="taskDeadline" />
+
+            <label>Status</label>
+            <select id="taskStatus">
+              <option value="Pending">Pending</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Completed">Completed</option>
+            </select>
+
+            <div class="modal-actions">
+              <button onclick="saveTask()">Save</button>
+              <button onclick="closeTaskModal()">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Admin JS -->
+    <script src="../js/admin.js"></script>
+  </body>
+</html>

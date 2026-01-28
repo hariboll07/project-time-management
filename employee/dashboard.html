@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Employee Dashboard</title>
+    <link rel="stylesheet" href="../css/admin.css" />
+  </head>
+
+  <body>
+    <div id="layout">
+      <!-- SIDEBAR -->
+      <aside id="sidebar">
+        <div class="logo">BHK Groups</div>
+
+        <nav class="menu">
+          <div class="navs-bar">
+            <button onclick="showSection('dashboard')">Dashboard</button>
+            <button onclick="showSection('projects')">My Projects</button>
+            <button onclick="showSection('tasks')">My Tasks</button>
+          </div>
+
+          <div class="logoutbtn-bar">
+            <button class="logout-btn" onclick="logout()">Logout</button>
+          </div>
+        </nav>
+      </aside>
+
+      <!-- MAIN CONTENT -->
+      <main id="mainContent">
+        <!-- DASHBOARD -->
+        <section id="dashboard" class="section">
+          <h1>Employee Dashboard</h1>
+
+          <div class="overview-row">
+            <div class="overview-card">
+              <p class="label1">Total Tasks</p>
+              <h2 id="taskCount">0</h2>
+            </div>
+            <div class="overview-card">
+              <p class="label2">My Projects</p>
+              <h2 id="projectCount">0</h2>
+            </div>
+
+            <div class="overview-card">
+              <p class="label3">Completed Tasks</p>
+              <h2 id="completedTaskCount">0</h2>
+            </div>
+
+            <div class="overview-card">
+              <p class="label4">Pending Tasks</p>
+              <h2 id="pendingTaskCount">0</h2>
+            </div>
+            <div class="overview-card">
+              <p class="label5">Tasks Due Today</p>
+              <h2 id="dueTodayCount">0</h2>
+            </div>
+
+            <div class="overview-card">
+              <p class="label6">Overdue Projects</p>
+              <h2 id="overdueProjectCount">0</h2>
+            </div>
+            <div class="overview-card">
+              <p class="label7">Overdue Tasks</p>
+              <h2 id="overdueTaskCount">0</h2>
+            </div>
+          </div>
+        </section>
+        <!-- PROJECTS -->
+        <section id="projects" class="section hidden">
+          <h1>My Projects</h1>
+          <div id="projectList"></div>
+        </section>
+
+        <!-- TASKS -->
+        <section id="tasks" class="section hidden">
+          <h1>My Tasks</h1>
+          <div id="taskList"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="../js/employee.js"></script>
+  </body>
+</html>

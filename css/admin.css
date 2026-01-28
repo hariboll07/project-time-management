@@ -1,0 +1,943 @@
+/* RESET */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+/* GLOBAL THEME */
+body{
+    background: #0D0D0D;
+    color: #E5E5E5;
+}
+
+/* LAYOUT */
+#layout {
+    display: flex;
+    overflow: hidden; /* 🔑 THIS FIXES SIDEBAR BREAK */
+}
+
+
+/* MAIN CONTENT */
+#mainContent {
+    flex: 1;
+    padding: 24px;
+    overflow-y: auto;
+    height: 100vh;
+}
+
+/* SECTIONS HIDDEN */
+.hidden {
+    display: none !important;
+}
+
+
+.menu{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+/* ==== Sidebar Container ==== */
+#sidebar {
+  width: 300px;
+  height: 100vh;
+  flex-shrink: 0;          /* 🔑 PREVENT SIDEBAR FROM SHRINKING */
+  overflow: hidden;       /* keep sidebar stable */
+  background: #06080b; /* premium dark */
+  padding: 25px 20px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(12px);
+}
+
+/* ==== Logo ==== */
+#sidebar .logo {
+  font-size: 32px;
+  font-weight: 700;
+  color: #943702;
+  letter-spacing: 1px;
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+/* ==== Menu Buttons ==== */
+#sidebar .menu .navs-bar button {
+  width: 100%;
+  padding: 14px 18px;
+  margin: 6px 0;
+  background: transparent;
+  border: none;
+  color: #c6b385;
+  font-size: 18px;
+  font-weight: 500;
+  text-align: left;
+  border-radius: 10px;
+  transition: 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Hover Effect */
+#sidebar .menu .navs-bar button:hover {
+  background: rgba(88, 166, 255, 0.12);
+  color: #a1884c;
+  transform: translateX(4px);
+}
+#sidebar .menu .logoutbtn-bar button:hover{
+  background-color: rgb(255, 48, 48);
+  color: #58a6ff;
+  transform: scale(1.02);
+}
+
+/* Active Button (Optional – Add class="active") */
+#sidebar .menu .navs-bar button:active {
+  color: rgb(143, 77, 53);
+  font-weight: 600;
+  box-shadow: 0 0 10px rgba(88, 166, 255, 0.5);
+}
+#sidebar .menu .logoutbtn-bar button:active{
+  background: rgb(255, 136, 120);
+  color: #58a6ff;
+  color: red;
+  transform: scale(0.95);
+}
+/* ==== Logout Button Styling ==== */
+.logoutbtn-bar {
+  margin-top: auto;
+}
+
+.logout-btn {
+  padding: 10px 18px;
+  background-color:rgb(147, 33, 31);
+  border: none;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  text-align: left;
+  border-radius: 5px;
+  transition: 0.3s ease;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+}
+
+#dashboard,
+#approvals,
+#users,
+#projects,
+#tasks,
+#employees {
+    opacity: 1;                 
+    transform: translateX(-10px);
+    animation: liftFade 0.6s ease forwards;
+}
+@keyframes liftFade {
+  from {
+    opacity: 0.85;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* DASHBOARD OVERVIEW - GITHUB STYLE */
+#dashboard h1,#approvals h1,#users h1,#projects h1,#tasks h1,#employees h1{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color:#ff6600;
+    font-size: 26px;
+    text-align: center;
+    margin-top: 20px;
+}
+.overview-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin: 52px;
+    margin-top: 40px;
+}
+
+.overview-card {
+    background: #000000;
+    padding: 38px 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: rgb(253, 127, 2) 0px 2px 6px 0px;
+    justify-content: center;
+    transition: 0.9s ease;
+    cursor: pointer;
+}
+
+.overview-card:hover{
+    background: #050505;
+    box-shadow: rgb(255, 230, 0) 0px 2px 5px 0px;
+    transform: scale(1.05);
+}
+
+.overview-card p {
+    font-size: 23px;
+    margin-bottom: 6px;
+}
+.overview-card .label1{
+    color: #ff5900;
+}
+.overview-card .label2{
+    color: #ffae00;
+}
+.overview-card .label3{
+    color: #d0d700;
+}
+.overview-card .label4{
+    color: #00ff11;
+}
+.overview-card .label5{
+    color: #480058;
+}
+.overview-card .label6{
+    color: #900089;
+}
+.overview-card .label7{
+    color: #0026ff;
+}
+.overview-card .label8{
+    color: #020069;
+}
+.overview-card h2 {
+    font-size: 24px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+    margin-top: 8px;
+    color: #00ffff;
+}
+
+#approvals #pendingUsers h1,#users #approvedUsers p{
+    text-align: center;
+    margin-top: 50px;
+    font-size: 18px;
+    color: #8c8c8c;
+    font-weight: 500;
+}
+#pendingUsers,#approvedUsers{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin: 32px;
+    margin-top: 40px;
+}
+#pendingUsers .user-card,#approvedUsers .user-card{
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 14px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 20px;
+    transition: 0.9s ease;
+}
+
+#pendingUsers .user-card:hover{
+    transform:scale(1.02);
+    cursor: pointer;
+}
+
+#approvals #pendingUsers .user-card p:nth-child(1),#users #approvedUsers .user-card p:nth-child(1){
+    color: #58a6ff;
+}
+#approvals #pendingUsers .user-card p:nth-child(2),#users #approvedUsers .user-card p:nth-child(2){
+    color: #836539;
+}
+#approvals #pendingUsers .user-card p,#users #approvedUsers .user-card p{
+    margin: 5px;
+    text-align: left;
+}
+
+#approvals #pendingUsers .actions{
+    margin-top: 10px;
+}
+
+#approvals #pendingUsers .actions button{
+    margin: 5px;
+}
+
+#approvals #pendingUsers .actions button:nth-child(1){
+    padding: 5px;
+    border-radius: 5px;
+    width: 70px;
+    border: none;
+    background-color:green;
+    transition: 0.9s ease;
+}
+#approvals #pendingUsers .actions button:nth-child(1):hover{
+    transform: scale(1.02);
+    cursor: pointer;
+    box-shadow: rgba(0, 161, 16, 0.56) 0px 2px 6px 2px;
+}
+
+#approvals #pendingUsers .actions button:nth-child(2){
+    padding: 5px;
+    border-radius: 5px;
+    width: 70px;
+    border: none;
+    background-color: crimson;
+    transition: 0.9s ease;
+}
+#approvals #pendingUsers .actions button:nth-child(2):hover{
+    transform: scale(1.02);
+    cursor: pointer;
+    box-shadow: rgba(161, 0, 0, 0.56) 0px 2px 6px 2px;
+}
+
+#users #approvedUsers .user-card span{
+    color: bisque;
+    margin-right: 5px;
+}
+#approvedUsers .user-card button{
+    width: max-content;
+    border: none;
+    margin: 10px 0px 0px 5px;
+    padding: 5px 15px;
+    border-radius: 4px;
+    background-color: #ff2f2f;
+    transition: 0.8s ease;
+}
+#approvedUsers .user-card button:hover{
+    cursor: pointer;
+    transform: scale(1.03);
+}
+/* 🔹 PROJECT & TASK BUTTONS */
+#projects #hiddenprojectbtn,
+#tasks #hiddentaskbtn {
+  padding: 10px;
+  margin-top: 30px;
+  margin-left: 30px;
+  background-color: goldenrod;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: 0.9s ease;
+}
+
+#projects button:hover,
+#tasks button:hover {
+  transform: scale(1.04);
+  cursor: pointer;
+}
+
+#projects button:active,
+#tasks button:active {
+  transform: scale(0.9);
+}
+
+/* 🔹 PROJECT LIST & PROJECT CARD */
+#projects #projectList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+#projects #projectList p {
+  font-size: 18px;
+}
+
+.project-row {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  background: #0F0F0F;
+  transition: 0.9s ease;
+  box-shadow:
+    rgba(0, 0, 0, 0.25) 0px 14px 15px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px,
+    rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px,
+    rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.project-row:hover {
+  transform: scale(1.005);
+}
+
+/* 🔹 PROJECT CARD CONTENT */
+.project-row .left {
+  margin-left: 10px;
+  min-width: 300px;
+  max-width: 300px;
+}
+
+.project-row .left h3 {
+  margin-top: 5px;
+  color: rgb(143, 177, 255);
+}
+
+.project-row .left p:nth-child(2) {
+  color: #898c2d;
+}
+
+.project-row .left p:nth-child(3) {
+  color: rgb(135, 32, 32);
+}
+
+.project-row .middle {
+  margin-top: 30px;
+}
+
+.project-row .middle p:nth-child(1) {
+  color: #351075;
+}
+
+.project-row .middle p:nth-child(2) {
+  font-weight: bold; /* keep emphasis, remove forced color */
+}
+
+.project-row .middle p,
+.project-row .left p {
+  margin: 10px 0;
+}
+
+/* 🔹 PROJECT CARD ACTION BUTTONS */
+#projectList .project-row .right {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+
+#projectList .project-row .right button {
+  width: 150px;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  color: #E5E5E5;
+  transition: 0.9s ease;
+}
+
+#projectList .project-row .right .deleteTask {
+  background-color: red;
+}
+
+#projectList .project-row .right .completeTask {
+  background-color: #00733c;
+}
+
+#projectList .project-row .right .viewTask {
+  background-color: purple;
+  margin-top: 10px;
+}
+
+/* 🔹 MODAL (PROJECT CREATE / EDIT) */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9;
+}
+
+.modal-content {
+  margin-left:290px ;
+  width: 400px;
+  padding: 30px;
+  background: #0F0F0F;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  flex-direction: column;
+  box-shadow:
+    rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+.modal-content h2 {
+  text-align: center;
+  color: #898c2d;
+  margin-bottom: 10px;
+}
+
+.modal-content label {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  color: #ff9359;
+}
+.modal-content select{
+    margin-bottom: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  background: #8c8c8c;
+}
+.modal-content select:hover,#taskEmployeeList .emp-check:hover{
+    cursor: pointer;
+}
+.modal-content input {
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  background: #8c8c8c;
+}
+#taskEmployeeList{
+    margin-top: 5px;
+}
+#taskEmployeeList .emp-check{
+    color:crimson
+}
+.modal-content .modal-actions{
+    margin-top: 10px;
+}
+.modal-content .modal-actions button{
+    padding: 5px;
+    color:#06080b;
+    border-radius: 4px;
+    transition: 0.9s ease;
+    border: none;
+    font-weight: 500;
+    font-size: 14px;
+}
+.modal-content .modal-actions button:nth-child(1){
+    background-color: #00b35c;
+}
+.modal-content .modal-actions button:nth-child(2){
+    background-color:#8e240a
+}
+.modal-content .modal-actions button:hover{
+    cursor: pointer;
+    transform: scale(1.03);
+}
+
+/* 🔹 TASK SECTION */
+#tasks #taskList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.task-project-title {
+  width: 100%;
+  font-size: 20px;
+  color: #8f7a3a;
+  margin: 20px 0 10px;
+  padding-left: 10px;
+  border-left: 5px solid #8f7a3a;
+}
+
+/* 🔹 TASK CARD */
+/* =====================
+   TASK CARD UI (SAFE)
+===================== */
+
+.task-card {
+  width: 100%;
+  background: #0f0f0f;
+  padding: 18px;
+  border-radius: 14px;
+  margin-bottom: 20px;
+  box-shadow: rgba(0,0,0,0.35) 0px 10px 25px;
+}
+
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-header h3 {
+  color: #58a6ff;
+}
+.task-card .task-employees{
+    color: #9b5dff;
+    font-size: 16px;
+    font-weight: 600;
+}
+.task-card .task-deadline{
+    color: rgb(134, 22, 7);
+    font-size: 16px;
+    font-weight: 600;
+}
+.task-card .task-employees b,.task-card .task-deadline b{
+    color: #7a5c00;
+    font-size: 16px;
+}
+.status {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.status.pending {
+  background: #7a5c00;
+  color: #ffd24d;
+}
+
+.status.in-progress {
+  background: #003366;
+  color: #58a6ff;
+}
+
+.status.completed {
+  background: #0a5c36;
+  color: #3cff9e;
+}
+
+.task-project,
+.task-employees,
+.task-deadline {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #cfcfcf;
+}
+
+.task-footer {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.task-footer select{
+    width: 100px;
+    padding: 2px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+}
+.task-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.complete-btn {
+  background: #00733c;
+  border: none;
+  padding: 7px 14px;
+  border-radius: 6px;
+  color: white;
+}
+
+.delete-btn {
+  background: crimson;
+  border: none;
+  padding: 7px 14px;
+  border-radius: 6px;
+  color: white;
+}
+
+/* 🔹 PROJECT TASKS SIDE PANEL (MERGED & CLEAN) */
+#projectTasksPanel {
+  position: fixed;
+  top: 0px;
+  right: 0;
+  width: 420px;
+  height: 100vh;
+  padding: 20px;
+  padding-top: 0px;
+  background: #0F0F0F;
+  border-left: 2px solid rgba(255,255,255,0.1);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  box-shadow: rgba(0,0,0,0.6) -10px 0 30px;
+  animation: slideIn 0.3s ease forwards;
+}
+
+@keyframes slideIn {
+  from { 
+    opacity: 0.5;
+    transform: translateX(100%);
+ }
+  to{
+    opacity: 1; 
+    transform: translateX(0); 
+}
+}
+
+.panel-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background: #0F0F0F;
+}
+
+
+.panel-header h2 {
+  color: #ff9359;
+}
+
+.update-btn{
+  margin-right: 20px;
+}
+
+.panel-header button {
+  background: none;
+  border: none;
+  font-weight: 100;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+
+#projectTasksList .task-row {
+  background: #141414;
+  margin-bottom: 14px;
+}
+#projectTasksPanel .task-row {
+  align-items: flex-start;
+  flex-direction: column;
+}
+#projectTasksPanel .empty {
+  text-align: center;
+  color: #888;
+  margin-top: 40px;
+  font-size: 14px;
+}
+/* =========================
+   TASK ROW UI
+========================= */
+
+.task-row {
+  width: 100%;
+  background: #0f0f0f;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+
+  box-shadow:
+    rgba(0, 0, 0, 0.35) 0px 8px 20px;
+  transition: 0.3s ease;
+}
+
+.task-row:hover {
+  transform: scale(1.01);
+  background: #151515;
+}
+
+/* =========================
+   LEFT SECTION
+========================= */
+
+.task-left {
+  flex: 2;
+}
+
+.task-left h4 {
+  color: #58a6ff;
+  margin-bottom: 6px;
+  font-size: 16px;
+}
+
+.task-left p {
+  font-size: 14px;
+  color: #cfcfcf;
+  margin: 4px 0;
+}
+
+.task-left b {
+  color: #ffd24d;
+}
+
+/* =========================
+   DEADLINE
+========================= */
+
+.task-left span {
+  font-weight: bold;
+  color: #9acd32;
+}
+
+.task-left span.overdue {
+  color: #ff4d4d;
+}
+
+/* =========================
+   MIDDLE SECTION
+========================= */
+
+.task-middle {
+  flex: 2;
+  font-size: 14px;
+  color: #cfcfcf;
+}
+
+.task-middle p:first-child {
+  color: #ff9359;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+/* =========================
+   RIGHT SECTION
+========================= */ 
+
+.task-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.task-right button {
+  padding: 8px 16px;
+  background: #00733c;
+  border: none;
+  border-radius: 6px;
+  color: #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.task-right button:hover {
+  background: #00a15a;
+  transform: scale(1.05);
+}
+
+.task-right button:disabled {
+  background: #444;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+/* =========================
+   OVERDUE TASK CARD
+========================= */
+
+.task-row.overdue-card {
+  border-left: 5px solid #ff4d4d;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 77, 77, 0.15),
+    rgba(0, 0, 0, 0)
+  );
+}
+
+/* 🔹 OVERDUE (PROJECT + TASK) */
+.project-row.overdue-card,
+.task-row.overdue-card {
+  border-left: 5px solid #ff4d4d;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 77, 77, 0.12),
+    rgba(0, 0, 0, 0)
+  );
+  transition: 0.9s ease;
+}
+button:disabled,
+button[disabled] {
+  background: #444 !important;
+  color: #aaa !important;
+  pointer-events: none !important;
+  cursor: not-allowed;
+  opacity: 0.6;
+  pointer-events: none;
+}
+/* 🔥 OVERDUE TASK */
+.overdue-card {
+  border-left: 6px solid crimson;
+  box-shadow: rgba(220, 20, 60, 0.6) 0px 0px 12px;
+}
+
+.overdue-tag {
+  background: crimson;
+  color: white;
+  padding: 3px 8px;
+  font-size: 11px;
+  border-radius: 12px;
+  margin-left: 10px;
+}
+
+/* ===============================
+   MANAGER - EMPLOYEES SECTION
+=============================== */
+
+#employees #employeeList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin: 40px;
+}
+
+/* Employee Card */
+#employees .user-card {
+  background: #0f0f0f;
+  padding: 26px;
+  border-radius: 14px;
+  box-shadow:
+    rgba(0, 0, 0, 0.35) 0px 10px 25px;
+  transition: 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Hover effect */
+#employees .user-card:hover {
+  transform: translateY(-2px) scale(1.009);
+  box-shadow:
+    rgba(88, 166, 255, 0.45) 0px 4px 2px;
+}
+
+/* Employee Name */
+#employees .user-card p:first-child {
+  font-size: 18px;
+  color: #58a6ff;
+  font-weight: 600;
+}
+
+/* Email */
+#employees .user-card p:nth-child(2) {
+  font-size: 14px;
+  color: #ff9393;
+}
+
+/* Role */
+#employees .user-card p:nth-child(3) {
+  font-size: 13px;
+  color: #9acd32;
+  font-weight: 500;
+}
+
+/* Empty State */
+#employees p {
+  text-align: left;
+  font-size: 16px;
+}
+
+/* Responsive tweak */
+@media (max-width: 600px) {
+  #employees #employeeList {
+    margin: 20px;
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 1200px) {
+  #projectTasksPanel {
+    width: 100%;
+  }
+}
