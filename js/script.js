@@ -19,11 +19,11 @@ const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
 if (currentUser) {
   if (currentUser.role === "admin") {
-    window.location.replace("/admin/dashboard.html");
+    window.location.replace("../admin/dashboard.html");
   } else if (currentUser.role === "manager") {
-    window.location.replace("/manager/dashboard.html");
+    window.location.replace("../manager/dashboard.html");
   } else if (currentUser.role === "employee") {
-    window.location.replace("/employee/dashboard.html");
+    window.location.replace("../employee/dashboard.html");
   }
 }
 
